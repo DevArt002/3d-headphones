@@ -114,6 +114,20 @@ class SceneInit {
 			this.scene.remove(object);
 		}
 	}
+
+	onResize() {
+		this.width = this.root.clientWidth;
+		this.height = this.root.clientHeight;
+
+		this.renderer.setSize(this.width, this.height);
+
+		this.camera.aspect = this.width / this.height;
+		this.camera.updateProjectionMatrix();
+	}
+
+	bindEvents() {
+		window.addEventListener('resize', () => this.onResize());
+	}
 }
 
 // To call our class as a function
